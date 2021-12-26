@@ -20,30 +20,38 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Cheerleading any kind of inanimate object is silly">
-<meta property="og:type" content="website">
-<meta property="og:title" content="文理">
-<meta property="og:url" content="http://example.com/index.html">
+  <meta name="description" content="🌀前言 时值圣诞，把原先的博客迁移到Hexo上，记录操作以踩坑过程。  Hexo是一款基于Node.js的静态博客框架，依赖少易于安装使用，可以方便的生成静态网页托管在GitHub和Heroku上，是搭建博客的首选框架。另一方面，使用GitHub托管个人主页，最直观的优点就是：免费。省去了服务器的租借费用或者使用时的电费，非常的绿色。  🌀操作流程  GitHub  GitHub上创建个人仓">
+<meta property="og:type" content="article">
+<meta property="og:title" content="个人博客的起步 Hexo">
+<meta property="og:url" content="http://example.com/2021/12/26/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E8%B5%B7%E6%AD%A5Hexo/index.html">
 <meta property="og:site_name" content="文理">
-<meta property="og:description" content="Cheerleading any kind of inanimate object is silly">
+<meta property="og:description" content="🌀前言 时值圣诞，把原先的博客迁移到Hexo上，记录操作以踩坑过程。  Hexo是一款基于Node.js的静态博客框架，依赖少易于安装使用，可以方便的生成静态网页托管在GitHub和Heroku上，是搭建博客的首选框架。另一方面，使用GitHub托管个人主页，最直观的优点就是：免费。省去了服务器的租借费用或者使用时的电费，非常的绿色。  🌀操作流程  GitHub  GitHub上创建个人仓">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/images/Hexo-logo.png">
+<meta property="og:image" content="http://example.com/images/Hexo-folder.png">
+<meta property="og:image" content="http://example.com/images/Hexo-gitConf.png">
+<meta property="article:published_time" content="2021-12-26T11:08:18.304Z">
+<meta property="article:modified_time" content="2021-12-26T11:08:18.304Z">
 <meta property="article:author" content="Bowen">
+<meta property="article:tag" content="Hexo">
+<meta property="article:tag" content="nodejs">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/Hexo-logo.png">
 
-<link rel="canonical" href="http://example.com/">
+<link rel="canonical" href="http://example.com/2021/12/26/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E8%B5%B7%E6%AD%A5Hexo/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>文理</title>
+  <title>个人博客的起步 Hexo | 文理</title>
   
 
 
@@ -148,9 +156,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
+
+    
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
@@ -166,10 +175,9 @@
       <meta itemprop="name" content="文理">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/12/26/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E8%B5%B7%E6%AD%A5Hexo/" class="post-title-link" itemprop="url">个人博客的起步 Hexo</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          个人博客的起步 Hexo
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -192,7 +200,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="前言"><a class="markdownIt-Anchor" href="#前言"></a> 🌀前言</h2>
+        <h2 id="前言"><a class="markdownIt-Anchor" href="#前言"></a> 🌀前言</h2>
 <p>时值圣诞，把原先的博客迁移到Hexo上，记录操作以踩坑过程。<br />
 <img src="/images/Hexo-logo.png" alt="" /></p>
 <p>Hexo是一款基于Node.js的静态博客框架，依赖少易于安装使用，可以方便的生成静态网页托管在GitHub和Heroku上，是搭建博客的首选框架。另一方面，使用GitHub托管个人主页，最直观的优点就是：<font color='green'>免费</font>。省去了服务器的租借费用或者使用时的电费，非常的<font color='green'>绿色</font>。</p>
@@ -254,21 +262,27 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br><span class="line">hexo clean </span><br><span class="line">hexo g </span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
 <p>访问GitHub仓库页面，settings -&gt; pages。在这里能看到GitHub的发布URL。至此，初始的Blog构造并且发布完成。</p>
 
-      
     </div>
 
     
     
     
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
+          <div class="post-tags">
+              <a href="/tags/Hexo/" rel="tag"># Hexo</a>
+              <a href="/tags/nodejs/" rel="tag"># nodejs</a>
+          </div>
+
+        
+
+
+        
       </footer>
+    
   </article>
   
   
-  
-
-
   
 
 
@@ -321,6 +335,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text"> 🌀前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E6%B5%81%E7%A8%8B"><span class="nav-number">2.</span> <span class="nav-text"> 🌀操作流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A4%E5%AE%9E%E6%93%8D"><span class="nav-number">3.</span> <span class="nav-text"> 🌀步骤实操</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#github%E4%B8%8A%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%BB%93%E5%BA%93"><span class="nav-number">3.1.</span> <span class="nav-text"> 📖GitHub上创建个人仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%AC%E5%9C%B0%E5%AE%89%E8%A3%85gitnodejshexo"><span class="nav-number">3.2.</span> <span class="nav-text"> 📖本地安装Git，Nodejs，Hexo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hexo%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-number">3.3.</span> <span class="nav-text"> 📖Hexo常用命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%83%A8%E7%BD%B2%E6%8E%A8%E9%80%81"><span class="nav-number">3.4.</span> <span class="nav-text"> 📖部署推送</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
