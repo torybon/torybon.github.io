@@ -20,19 +20,19 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="🌀前言 时值圣诞，把原先的博客迁移到Hexo上，记录操作以踩坑过程。  Hexo是一款基于Node.js的静态博客框架，依赖少易于安装使用，可以方便的生成静态网页托管在GitHub和Heroku上，是搭建博客的首选框架。另一方面，使用GitHub托管个人主页，最直观的优点就是：免费。省去了服务器的租借费用或者使用时的电费，非常的绿色。  🌀操作流程  GitHub  GitHub上创建个人仓">
+  <meta name="description" content="Hexo是一款基于Node.js的静态博客框架，依赖少易于安装使用，可以方便的生成静态网页托管在GitHub和Heroku上，是搭建博客的首选框架。另一方面，使用GitHub托管个人主页，最直观的优点就是：免费。省去了服务器的租借费用或者使用时的电费，非常的绿色。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="个人博客的起步 Hexo">
 <meta property="og:url" content="http://example.com/2021/12/26/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E8%B5%B7%E6%AD%A5Hexo/index.html">
-<meta property="og:site_name" content="文理">
-<meta property="og:description" content="🌀前言 时值圣诞，把原先的博客迁移到Hexo上，记录操作以踩坑过程。  Hexo是一款基于Node.js的静态博客框架，依赖少易于安装使用，可以方便的生成静态网页托管在GitHub和Heroku上，是搭建博客的首选框架。另一方面，使用GitHub托管个人主页，最直观的优点就是：免费。省去了服务器的租借费用或者使用时的电费，非常的绿色。  🌀操作流程  GitHub  GitHub上创建个人仓">
+<meta property="og:site_name" content="文笔轨迹">
+<meta property="og:description" content="Hexo是一款基于Node.js的静态博客框架，依赖少易于安装使用，可以方便的生成静态网页托管在GitHub和Heroku上，是搭建博客的首选框架。另一方面，使用GitHub托管个人主页，最直观的优点就是：免费。省去了服务器的租借费用或者使用时的电费，非常的绿色。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/images/Hexo-logo.png">
 <meta property="og:image" content="http://example.com/images/Hexo-folder.png">
 <meta property="og:image" content="http://example.com/images/Hexo-gitConf.png">
 <meta property="article:published_time" content="2021-12-26T11:08:18.304Z">
-<meta property="article:modified_time" content="2021-12-26T11:08:18.304Z">
-<meta property="article:author" content="Bowen">
+<meta property="article:modified_time" content="2021-12-26T15:59:56.169Z">
+<meta property="article:author" content="bowen">
 <meta property="article:tag" content="Hexo">
 <meta property="article:tag" content="nodejs">
 <meta name="twitter:card" content="summary">
@@ -51,7 +51,7 @@
   };
 </script>
 
-  <title>个人博客的起步 Hexo | 文理</title>
+  <title>个人博客的起步 Hexo | 文笔轨迹</title>
   
 
 
@@ -82,7 +82,7 @@
   </style>
 </noscript>
 
-<link rel="alternate" href="/atom.xml" title="文理" type="application/atom+xml">
+<link rel="alternate" href="/atom.xml" title="文笔轨迹" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -103,10 +103,10 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">文理</h1>
+      <h1 class="site-title">文笔轨迹</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
-      <p class="site-subtitle" itemprop="description">砖の地</p>
+      <p class="site-subtitle" itemprop="description">bowen's blog</p>
   </div>
 
   <div class="site-nav-right">
@@ -128,6 +128,11 @@
         <li class="menu-item menu-item-tags">
 
     <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
 
   </li>
         <li class="menu-item menu-item-archives">
@@ -167,12 +172,12 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Bowen">
+      <meta itemprop="name" content="bowen">
       <meta itemprop="description" content="Cheerleading any kind of inanimate object is silly">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="文理">
+      <meta itemprop="name" content="文笔轨迹">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
@@ -185,8 +190,18 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2021-12-26 19:08:18" itemprop="dateCreated datePublished" datetime="2021-12-26T19:08:18+08:00">2021-12-26</time>
+              <time title="创建时间：2021-12-26 19:08:18 / 修改时间：23:59:56" itemprop="dateCreated datePublished" datetime="2021-12-26T19:08:18+08:00">2021-12-26</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
+                </span>
             </span>
 
           
@@ -200,10 +215,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="前言"><a class="markdownIt-Anchor" href="#前言"></a> 🌀前言</h2>
-<p>时值圣诞，把原先的博客迁移到Hexo上，记录操作以踩坑过程。<br />
-<img src="/images/Hexo-logo.png" alt="" /></p>
+        <p><img src="/images/Hexo-logo.png" alt="" /></p>
 <p>Hexo是一款基于Node.js的静态博客框架，依赖少易于安装使用，可以方便的生成静态网页托管在GitHub和Heroku上，是搭建博客的首选框架。另一方面，使用GitHub托管个人主页，最直观的优点就是：<font color='green'>免费</font>。省去了服务器的租借费用或者使用时的电费，非常的<font color='green'>绿色</font>。</p>
+<span id="more"></span>
+<h2 id="前言"><a class="markdownIt-Anchor" href="#前言"></a> 🌀前言</h2>
+<p>最近下定决心，把原先写的一些东西归个档，迁移到博客上，最为新博客的第一篇文章，记录搭建过程再合适不过。</p>
 <h2 id="操作流程"><a class="markdownIt-Anchor" href="#操作流程"></a> 🌀操作流程</h2>
 <ol>
 <li>GitHub
@@ -226,16 +242,16 @@
 <p><strong>🐞坑02</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># 免费用户的仓库必须要设置成开发仓库，否则不会对外暴露访问URL，付费用户才可以在私有仓库上对外暴露URL。</span><br></pre></td></tr></table></figure>
 <p><strong>🐞坑03</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># 需要构造GitHub-SSH密钥</span><br><span class="line">## git本地设置</span><br><span class="line">git config --global user.name &quot;GitHub用户名&quot;</span><br><span class="line">git config --global user.email &quot;GitHub注册邮箱&quot;</span><br><span class="line">## 获取id_rsa.pub</span><br><span class="line">ssh-keygen -t rsa -C &quot;GitHub注册邮箱&quot;</span><br><span class="line"># 打开GitHub，个人设定 -&gt; SSH and GPG keys -&gt; new SSH Key，将刚才构造的id_rsa.pub写入key </span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># 需要构造GitHub-SSH密钥</span><br><span class="line">## git本地设置</span><br><span class="line">git config --global user.name &quot;GitHub用户名&quot;</span><br><span class="line">git config --global user.email &quot;GitHub注册邮箱&quot;</span><br><span class="line">## 获取id_rsa.pub</span><br><span class="line">ssh-keygen -t rsa -C &quot;GitHub注册邮箱&quot;</span><br><span class="line"># 打开GitHub，个人设定 -&gt; SSH and GPG keys -&gt; new SSH Key，将刚才构造的id_rsa.pub写入key</span><br></pre></td></tr></table></figure>
 <h3 id="本地安装gitnodejshexo"><a class="markdownIt-Anchor" href="#本地安装gitnodejshexo"></a> 📖本地安装Git，Nodejs，Hexo</h3>
 <ol>
 <li>
 <p>本地系统是Arch Linux，使用pacman安装</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">pacman -S git nodejs-lts-gallium npm</span><br><span class="line"></span><br><span class="line"><span class="comment"># git --version  -&gt;  git version 2.34.1</span></span><br><span class="line"><span class="comment"># node -v        -&gt;  v16.13.1</span></span><br><span class="line"><span class="comment"># npm -v         -&gt;  8.3.0 </span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">pacman -S git nodejs-lts-gallium npm</span><br><span class="line"></span><br><span class="line"><span class="comment"># git --version  -&gt;  git version 2.34.1</span></span><br><span class="line"><span class="comment"># node -v        -&gt;  v16.13.1</span></span><br><span class="line"><span class="comment"># npm -v         -&gt;  8.3.0</span></span><br></pre></td></tr></table></figure>
 </li>
 <li>
 <p>使用npm命令安装Hexo，输入</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir ~/hexo</span><br><span class="line">cd ~/hexo</span><br><span class="line">npm install -g hexo-cli </span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir ~/hexo</span><br><span class="line">cd ~/hexo</span><br><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
 </li>
 <li>
 <p>安装完成后，初始化博客，输入</p>
@@ -259,7 +275,7 @@
 <p>在文件的最下面的部分，填写GitHub的仓库路径<br />
 <img src="/images/Hexo-gitConf.png" alt="" /></p>
 <p>安装推送插件并且推送部署</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br><span class="line">hexo clean </span><br><span class="line">hexo g </span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
 <p>访问GitHub仓库页面，settings -&gt; pages。在这里能看到GitHub的发布URL。至此，初始的Blog构造并且发布完成。</p>
 
     </div>
@@ -278,6 +294,13 @@
 
 
         
+    <div class="post-nav">
+      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2021/12/26/Linux%20VS%20Windows/" rel="next" title="Linux VS Windows">
+      Linux VS Windows <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
       </footer>
     
   </article>
@@ -341,9 +364,9 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="Bowen"
+    <img class="site-author-image" itemprop="image" alt="bowen"
       src="/images/avatar.jpg">
-  <p class="site-author-name" itemprop="name">Bowen</p>
+  <p class="site-author-name" itemprop="name">bowen</p>
   <div class="site-description" itemprop="description">Cheerleading any kind of inanimate object is silly</div>
 </div>
 <div class="site-state-wrap motion-element">
@@ -351,14 +374,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">1</span>
+          <span class="site-state-item-count">2</span>
           <span class="site-state-item-name">日志</span>
         </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -387,12 +416,10 @@
   &copy; 
   <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
-    <i class="fa fa-heart"></i>
+    <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Bowen</span>
+  <span class="author" itemprop="copyrightHolder">bowen</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
-  </div>
 
         
 
