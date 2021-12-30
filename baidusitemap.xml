@@ -1,23 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://example.com/2021/12/28/windows10%E7%BE%8E%E5%8C%96%E8%BD%AF%E4%BB%B6/</loc>
-    <lastmod>2021-12-29</lastmod>
-  </url>
-  <url>
     <loc>http://example.com/2021/12/26/Linux%20VS%20Windows/</loc>
-    <lastmod>2021-12-29</lastmod>
+    <lastmod>2021-12-30</lastmod>
   </url>
   <url>
     <loc>http://example.com/2021/12/27/VirtualBox%E4%B8%8BLinux%E6%89%A9%E5%AE%B9/</loc>
-    <lastmod>2021-12-29</lastmod>
+    <lastmod>2021-12-30</lastmod>
   </url>
   <url>
-    <loc>http://example.com/2021/12/29/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E8%B5%B7%E6%AD%A5:Hexo(2)/</loc>
-    <lastmod>2021-12-29</lastmod>
+    <loc>http://example.com/2021/12/30/VirtualBox%20Tips/</loc>
+    <lastmod>2021-12-30</lastmod>
   </url>
   <url>
-    <loc>http://example.com/2021/12/26/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E8%B5%B7%E6%AD%A5:Hexo(1)/</loc>
-    <lastmod>2021-12-29</lastmod>
+    <loc>http://example.com/2021/12/28/windows10%E7%BE%8E%E5%8C%96%E8%BD%AF%E4%BB%B6/</loc>
+    <lastmod>2021-12-30</lastmod>
+  </url>
+  <url>
+    <loc>http://example.com/2021/12/25/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E8%B5%B7%E6%AD%A5:Hexo(2)/</loc>
+    <lastmod>2021-12-30</lastmod>
+  </url>
+  <url>
+    <loc>http://example.com/2021/12/25/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E8%B5%B7%E6%AD%A5:Hexo(1)/</loc>
+    <lastmod>2021-12-30</lastmod>
   </url>
 </urlset> 
