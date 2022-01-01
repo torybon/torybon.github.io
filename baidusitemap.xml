@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://example.com/2022/01/01/ArchLinux%E5%AE%89%E8%A3%85/</loc>
+    <lastmod>2022-01-01</lastmod>
+  </url>
+  <url>
+    <loc>http://example.com/2021/12/25/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E8%B5%B7%E6%AD%A5:Hexo(1)/</loc>
+    <lastmod>2022-01-01</lastmod>
+  </url>
+  <url>
     <loc>http://example.com/2021/12/31/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E8%B5%B7%E6%AD%A5:Hexo(3)/</loc>
     <lastmod>2021-12-31</lastmod>
   </url>
   <url>
     <loc>http://example.com/2021/12/29/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E8%B5%B7%E6%AD%A5:Hexo(2)/</loc>
-    <lastmod>2021-12-31</lastmod>
-  </url>
-  <url>
-    <loc>http://example.com/2021/12/25/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E8%B5%B7%E6%AD%A5:Hexo(1)/</loc>
     <lastmod>2021-12-31</lastmod>
   </url>
   <url>
