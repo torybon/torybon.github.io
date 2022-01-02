@@ -29,7 +29,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/images/Hexo-NexT-2.png">
 <meta property="article:published_time" content="2021-12-31T12:23:00.000Z">
-<meta property="article:modified_time" content="2021-12-31T14:06:14.636Z">
+<meta property="article:modified_time" content="2022-01-02T07:41:55.152Z">
 <meta property="article:author" content="bowen">
 <meta property="article:tag" content="Hexo">
 <meta property="article:tag" content="nodejs">
@@ -188,10 +188,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-12-31 20:23:00 / 修改时间：22:06:14" itemprop="dateCreated datePublished" datetime="2021-12-31T20:23:00+08:00">2021-12-31</time>
+              <time title="创建时间：2021-12-31 20:23:00" itemprop="dateCreated datePublished" datetime="2021-12-31T20:23:00+08:00">2021-12-31</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-01-02 15:41:55" itemprop="dateModified" datetime="2022-01-02T15:41:55+08:00">2022-01-02</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -199,6 +205,10 @@
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
                 </span>
             </span>
 
@@ -243,74 +253,69 @@
 </ol>
 <h2 id="背景图片"><a class="markdownIt-Anchor" href="#背景图片"></a> 🌀 背景图片</h2>
 <ol>
-<li>新建<code>hexo/source/_data/styles.styl</code>，即在<code>hexo</code>目录的<code>source</code>文件夹下新建<code>_data</code>文件夹，文件夹中新建<code>styles.styl</code>，编辑：</li>
+<li>
+<p>新建<code>hexo/source/_data/styles.styl</code>，即在<code>hexo</code>目录的<code>source</code>文件夹下新建<code>_data</code>文件夹，文件夹中新建<code>styles.styl</code>，编辑：</p>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//背景图片设置</span><br><span class="line">body &#123;</span><br><span class="line">    background-image: url(/images/background.jpg);</span><br><span class="line">    background-repeat: no-repeat;</span><br><span class="line">    background-attachment: fixed;</span><br><span class="line">    background-size: 100% 100%;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>background-image:url 为图片路径，可以直接使用链接，也可以是图片路径（将自定义图片放入hexo\public\images路径下）</p>
+</li>
+<li>
+<p>background-repeat：若果背景图片不能全屏，那么是否平铺显示，充满屏幕</p>
+</li>
+<li>
+<p>background-attachment：背景是否随着网页上下滚动而滚动，fixed 为固定</p>
+</li>
+<li>
+<p>background-size：图片展示大小，这里设置 100%，100% 的意义为：如果背景图片不能全屏，那么是否通过拉伸的方式将背景强制拉伸至全屏显示</p>
+</li>
+<li>
+<p>编辑主题配置文件<code>hexo/themes/next/_config.yml</code></p>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">custom_file_path:</span><br><span class="line">    style: source/_data/styles.styl</span><br></pre></td></tr></table></figure>
+</li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//背景图片设置</span><br><span class="line">body &#123;</span><br><span class="line">    background-image: url(/images/background.jpg);</span><br><span class="line">    background-repeat: no-repeat;</span><br><span class="line">    background-attachment: fixed;</span><br><span class="line">    background-size: 100% 100%;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>background-image:url 为图片路径，可以直接使用链接，也可以是图片路径（将自定义图片放入hexo\public\images路径下）</li>
-<li>background-repeat：若果背景图片不能全屏，那么是否平铺显示，充满屏幕</li>
-<li>background-attachment：背景是否随着网页上下滚动而滚动，fixed 为固定</li>
-<li>background-size：图片展示大小，这里设置 100%，100% 的意义为：如果背景图片不能全屏，那么是否通过拉伸的方式将背景强制拉伸至全屏显示</li>
-</ul>
-<ol start="2">
-<li>编辑主题配置文件<code>hexo/themes/next/_config.yml</code></li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">custom_file_path:</span><br><span class="line">    style: source/_data/styles.styl</span><br></pre></td></tr></table></figure>
 <h2 id="文章透明"><a class="markdownIt-Anchor" href="#文章透明"></a> 🌀 文章透明</h2>
 <p>在<code>styles.styl</code>里添加如下内容：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">//文章内容的透明度设置</span><br><span class="line">.content-wrap &#123;</span><br><span class="line">  opacity: 0.9;</span><br><span class="line">&#125;</span><br><span class="line">​</span><br><span class="line">//侧边框的透明度设置</span><br><span class="line">.sidebar &#123;</span><br><span class="line">  background-color: transparent;</span><br><span class="line">  opacity: 0.9;</span><br><span class="line">&#125;</span><br><span class="line">​</span><br><span class="line">//菜单栏的透明度设置</span><br><span class="line">.header-inner &#123;</span><br><span class="line">  background: rgba(255,255,255,0.9);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="边框圆角"><a class="markdownIt-Anchor" href="#边框圆角"></a> 🌀 边框圆角</h2>
 <ol>
-<li>与新建<code>styles.styl</code>类似，新建<code>variables.styl</code></li>
+<li>与新建<code>styles.styl</code>类似，新建<code>variables.styl</code> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">// 圆角设置</span><br><span class="line">$border-radius-inner     = 20px 20px 20px 20px;</span><br><span class="line">$border-radius           = 20px;</span><br></pre></td></tr></table></figure>
+</li>
+<li>编辑主题配置文件<code>hexo/themes/next/_config.yml</code> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">custom_file_path:</span><br><span class="line">    variable: source/_data/variables.styl</span><br></pre></td></tr></table></figure>
+</li>
 </ol>
-  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">// 圆角设置</span><br><span class="line">$border-radius-inner     = 20px 20px 20px 20px;</span><br><span class="line">$border-radius           = 20px;</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>编辑主题配置文件<code>hexo/themes/next/_config.yml</code></li>
-</ol>
-  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">custom_file_path:</span><br><span class="line">    variable: source/_data/variables.styl</span><br></pre></td></tr></table></figure>
 <h2 id="next7x-黑暗模式"><a class="markdownIt-Anchor" href="#next7x-黑暗模式"></a> 🌀 Next7.x 黑暗模式</h2>
 <ol>
-<li>安装<code>hexo-next-darkmode</code>插件</li>
-</ol>
-  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-next-darkmode --save</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>配置 Hexo 插件，在 Next 主题的 _config.yml 配置文件里添加以下内容</li>
-</ol>
-  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">darkmode_js:</span><br><span class="line">  enable: true</span><br><span class="line">  bottom: &#x27;32px&#x27; # default: &#x27;32px&#x27;</span><br><span class="line">  right: &#x27;unset&#x27; # default: &#x27;32px&#x27;</span><br><span class="line">  left: &#x27;32px&#x27; # default: &#x27;unset&#x27;</span><br><span class="line">  time: &#x27;0.5s&#x27; # default: &#x27;0.3s&#x27;</span><br><span class="line">  mixColor: &#x27;transparent&#x27; # default: &#x27;#100f2c&#x27;</span><br><span class="line">  backgroundColor: &#x27;transparent&#x27; # default: &#x27;#100f2c&#x27;</span><br><span class="line">  buttonColorDark: &#x27;#fff&#x27; # default: &#x27;#fff&#x27;</span><br><span class="line">  buttonColorLight: &#x27;#100f2c&#x27; # default: &#x27;#100f2c&#x27;</span><br><span class="line">  isActivated: false # default false</span><br><span class="line">  saveInCookies: true # default: true</span><br><span class="line">  label: &#x27;🌓&#x27; # default: &#x27;&#x27;</span><br><span class="line">  autoMatchOsTheme: true # default: true</span><br><span class="line">  libUrl: # Set custom library cdn url for Darkmode.js</span><br></pre></td></tr></table></figure>
-<ol start="3">
+<li>安装<code>hexo-next-darkmode</code>插件 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-next-darkmode --save</span><br></pre></td></tr></table></figure>
+</li>
+<li>配置 Hexo 插件，在 Next 主题的 _config.yml 配置文件里添加以下内容 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">darkmode_js:</span><br><span class="line">  enable: true</span><br><span class="line">  bottom: &#x27;32px&#x27; # default: &#x27;32px&#x27;</span><br><span class="line">  right: &#x27;unset&#x27; # default: &#x27;32px&#x27;</span><br><span class="line">  left: &#x27;32px&#x27; # default: &#x27;unset&#x27;</span><br><span class="line">  time: &#x27;0.5s&#x27; # default: &#x27;0.3s&#x27;</span><br><span class="line">  mixColor: &#x27;transparent&#x27; # default: &#x27;#100f2c&#x27;</span><br><span class="line">  backgroundColor: &#x27;transparent&#x27; # default: &#x27;#100f2c&#x27;</span><br><span class="line">  buttonColorDark: &#x27;#fff&#x27; # default: &#x27;#fff&#x27;</span><br><span class="line">  buttonColorLight: &#x27;#100f2c&#x27; # default: &#x27;#100f2c&#x27;</span><br><span class="line">  isActivated: false # default false</span><br><span class="line">  saveInCookies: true # default: true</span><br><span class="line">  label: &#x27;🌓&#x27; # default: &#x27;&#x27;</span><br><span class="line">  autoMatchOsTheme: true # default: true</span><br><span class="line">  libUrl: # Set custom library cdn url for Darkmode.js</span><br></pre></td></tr></table></figure>
+</li>
 <li>关闭原生的暗黑模式，确保 Next 原生的 darkmode 选项设置为 false</li>
 </ol>
 <h2 id="设置首页和归档页的分页"><a class="markdownIt-Anchor" href="#设置首页和归档页的分页"></a> 🌀 设置首页和归档页的分页</h2>
 <ol>
-<li>安装必要的插件</li>
+<li>安装必要的插件 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pm install --save hexo-generator-index</span><br><span class="line">npm install --save hexo-generator-archive</span><br></pre></td></tr></table></figure>
+</li>
+<li>修改Hexo的配置文件<code>hexo/blog/_config.yml</code> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># 这一段默认就有的</span><br><span class="line">index_generator:</span><br><span class="line">  path: &#x27;&#x27;</span><br><span class="line">  per_page: 5</span><br><span class="line">  order_by: -date</span><br><span class="line"></span><br><span class="line"># 新增对归档页面的分页设置</span><br><span class="line">archive_generator:</span><br><span class="line">  per_page: 50</span><br><span class="line">  yearly: true</span><br><span class="line">  monthly: true</span><br></pre></td></tr></table></figure>
+</li>
 </ol>
-  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pm install --save hexo-generator-index</span><br><span class="line">npm install --save hexo-generator-archive</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>修改Hexo的配置文件<code>hexo/blog/_config.yml</code></li>
-</ol>
-  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># 这一段默认就有的</span><br><span class="line">index_generator:</span><br><span class="line">  path: &#x27;&#x27;</span><br><span class="line">  per_page: 5</span><br><span class="line">  order_by: -date</span><br><span class="line"></span><br><span class="line"># 新增对归档页面的分页设置</span><br><span class="line">archive_generator:</span><br><span class="line">  per_page: 50</span><br><span class="line">  yearly: true</span><br><span class="line">  monthly: true</span><br></pre></td></tr></table></figure>
+<h2 id="修改超链接样式"><a class="markdownIt-Anchor" href="#修改超链接样式"></a> 修改超链接样式</h2>
+<p>修改 <code>/home/bowen/hexo/blog/themes/next/source/css/_common/components/post</code>，在最后添加</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">.post-body p a&#123;</span><br><span class="line">    color: #0593d3;</span><br><span class="line">    border-bottom: none;</span><br><span class="line">    border-bottom: 1px solid #0593d3;</span><br><span class="line">    &amp;:hover &#123;</span><br><span class="line">	color: #fc6423;</span><br><span class="line">	border-bottom: none;</span><br><span class="line">	border-bottom: 1px solid #fc6423;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="设置相关文章"><a class="markdownIt-Anchor" href="#设置相关文章"></a> 🌀 设置相关文章</h2>
 <p><a target="_blank" rel="noopener" href="https://wylu.me/posts/a2725fd8/">引用：NexT侧边栏配置</a></p>
 <ol>
-<li>在 <code>themes/next/source/css/_common/outline/sidebar</code> 下新增css <code>sidebar-related.styl</code></li>
+<li>在 <code>themes/next/source/css/_common/outline/sidebar</code> 下新增css <code>sidebar-related.styl</code> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">.sidebar-related &#123;</span><br><span class="line">  font-size: $font-size-small;</span><br><span class="line"></span><br><span class="line">  ol &#123;</span><br><span class="line">    list-style-type: disc;</span><br><span class="line">    margin: 0;</span><br><span class="line">    padding: 0 2px 5px 25px;</span><br><span class="line">    text-align: left;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.sidebar-related-title &#123;</span><br><span class="line">  margin-top: 20px;</span><br><span class="line">  padding-left: 0;</span><br><span class="line"></span><br><span class="line">  li &#123;</span><br><span class="line">    border-bottom-color: $sidebar-highlight;</span><br><span class="line">    color: $sidebar-highlight;</span><br><span class="line">    border-bottom: 1px solid;</span><br><span class="line">    cursor: pointer;</span><br><span class="line">    display: inline-block;</span><br><span class="line">    font-size: $font-size-small;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>修改<code>themes/next/source/css/_common/outline/sidebar/sidebar.styl</code> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">  @import &#x27;sidebar-toc&#x27; if (hexo-config(&#x27;toc.enable&#x27;));</span><br><span class="line">+ @import &#x27;sidebar-related&#x27; if (hexo-config(&#x27;toc.enable&#x27;));</span><br></pre></td></tr></table></figure>
+</li>
+<li>在<code>themes/next/layout/_partials/post/</code>文件夹中添加<code>post-related-sidebar.swig</code> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&#123;%- set popular_posts = popular_posts_json(theme.related_posts.params, page) %&#125;</span><br><span class="line">&#123;%- if page.toc.enable and theme.related_posts.enable and (theme.related_posts.display_in_home or not is_index) and popular_posts.json and popular_posts.json.length &gt; 0 %&#125;</span><br><span class="line">&lt;div&gt;</span><br><span class="line">  &lt;ul class=&quot;sidebar-related-title&quot;&gt;</span><br><span class="line">    &lt;li&gt;</span><br><span class="line">      &#123;&#123; theme.related_posts.title or __(&#x27;post.related_posts&#x27;) &#125;&#125;</span><br><span class="line">    &lt;/li&gt;</span><br><span class="line">  &lt;/ul&gt;</span><br><span class="line"></span><br><span class="line">  &lt;!--noindex--&gt;</span><br><span class="line">  &lt;div class=&quot;sidebar-related&quot;&gt;</span><br><span class="line">    &lt;ol&gt;</span><br><span class="line">      &#123;%- for popular_post in popular_posts.json %&#125;</span><br><span class="line">      &lt;li&gt;&lt;a href=&quot;&#123;&#123; popular_post.path &#125;&#125;&quot; rel=&quot;bookmark&quot;&gt;&lt;span class=&quot;nav-text&quot;&gt;&#123;&#123; popular_post.title &#125;&#125;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">      &#123;%- endfor %&#125;</span><br><span class="line">    &lt;/ol&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">  &lt;!--/noindex--&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&#123;%- endif %&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>修改侧边栏文件<code>themes/next/layout/_macro/sidebar.swig</code> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">+      &lt;div&gt;</span><br><span class="line">       &#123;%- set display_toc = page.toc.enable and display_toc %&#125;</span><br><span class="line">       &#123;%- if display_toc %&#125;</span><br><span class="line">         &#123;%- set toc = toc(page.content, &#123; &quot;class&quot;: &quot;nav&quot;, list_number: page.toc.number, max_depth: page.toc.max_depth &#125;) %&#125;</span><br><span class="line">@@ -36,6 +37,9 @@</span><br><span class="line"></span><br><span class="line">         &#123;&#123;- next_inject(&#x27;sidebar&#x27;) &#125;&#125;</span><br><span class="line">       &lt;/div&gt;</span><br><span class="line">+      &lt;/div&gt;</span><br><span class="line">+      &#123;&#123; partial(&#x27;_partials/post/post-related-sidebar.swig&#x27;) &#125;&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>删除原始插件的文章结尾的关联文章展示，修改<code>themes/next/layout/_macro/post.swig</code> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-    &#123;%- if theme.related_posts.enable and (theme.related_posts.display_in_home or not is_index) %&#125;</span><br><span class="line">-      &#123;&#123; partial(&#x27;_partials/post/post-related.swig&#x27;) &#125;&#125;</span><br><span class="line">-    &#123;%- endif %&#125;</span><br><span class="line"></span><br><span class="line">   &#123;%- if not is_index %&#125;</span><br><span class="line">     &#123;&#123;- next_inject(&#x27;postBodyEnd&#x27;) &#125;&#125;</span><br></pre></td></tr></table></figure>
+</li>
 </ol>
-  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">.sidebar-related &#123;</span><br><span class="line">  font-size: $font-size-small;</span><br><span class="line"></span><br><span class="line">  ol &#123;</span><br><span class="line">    list-style-type: disc;</span><br><span class="line">    margin: 0;</span><br><span class="line">    padding: 0 2px 5px 25px;</span><br><span class="line">    text-align: left;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.sidebar-related-title &#123;</span><br><span class="line">  margin-top: 20px;</span><br><span class="line">  padding-left: 0;</span><br><span class="line"></span><br><span class="line">  li &#123;</span><br><span class="line">    border-bottom-color: $sidebar-highlight;</span><br><span class="line">    color: $sidebar-highlight;</span><br><span class="line">    border-bottom: 1px solid;</span><br><span class="line">    cursor: pointer;</span><br><span class="line">    display: inline-block;</span><br><span class="line">    font-size: $font-size-small;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>修改<code>themes/next/source/css/_common/outline/sidebar/sidebar.styl</code></li>
-</ol>
-  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">  @import &#x27;sidebar-toc&#x27; if (hexo-config(&#x27;toc.enable&#x27;));</span><br><span class="line">+ @import &#x27;sidebar-related&#x27; if (hexo-config(&#x27;toc.enable&#x27;));</span><br></pre></td></tr></table></figure>
-<ol start="3">
-<li>在<code>themes/next/layout/_partials/post/</code>文件夹中添加<code>post-related-sidebar.swig</code></li>
-</ol>
-  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&#123;%- set popular_posts = popular_posts_json(theme.related_posts.params, page) %&#125;</span><br><span class="line">&#123;%- if page.toc.enable and theme.related_posts.enable and (theme.related_posts.display_in_home or not is_index) and popular_posts.json and popular_posts.json.length &gt; 0 %&#125;</span><br><span class="line">&lt;div&gt;</span><br><span class="line">  &lt;ul class=&quot;sidebar-related-title&quot;&gt;</span><br><span class="line">    &lt;li&gt;</span><br><span class="line">      &#123;&#123; theme.related_posts.title or __(&#x27;post.related_posts&#x27;) &#125;&#125;</span><br><span class="line">    &lt;/li&gt;</span><br><span class="line">  &lt;/ul&gt;</span><br><span class="line"></span><br><span class="line">  &lt;!--noindex--&gt;</span><br><span class="line">  &lt;div class=&quot;sidebar-related&quot;&gt;</span><br><span class="line">    &lt;ol&gt;</span><br><span class="line">      &#123;%- for popular_post in popular_posts.json %&#125;</span><br><span class="line">      &lt;li&gt;&lt;a href=&quot;&#123;&#123; popular_post.path &#125;&#125;&quot; rel=&quot;bookmark&quot;&gt;&lt;span class=&quot;nav-text&quot;&gt;&#123;&#123; popular_post.title &#125;&#125;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">      &#123;%- endfor %&#125;</span><br><span class="line">    &lt;/ol&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">  &lt;!--/noindex--&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&#123;%- endif %&#125;</span><br></pre></td></tr></table></figure>
-<ol start="4">
-<li>修改侧边栏文件<code>themes/next/layout/_macro/sidebar.swig</code></li>
-</ol>
-  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">+      &lt;div&gt;</span><br><span class="line">       &#123;%- set display_toc = page.toc.enable and display_toc %&#125;</span><br><span class="line">       &#123;%- if display_toc %&#125;</span><br><span class="line">         &#123;%- set toc = toc(page.content, &#123; &quot;class&quot;: &quot;nav&quot;, list_number: page.toc.number, max_depth: page.toc.max_depth &#125;) %&#125;</span><br><span class="line">@@ -36,6 +37,9 @@</span><br><span class="line"></span><br><span class="line">         &#123;&#123;- next_inject(&#x27;sidebar&#x27;) &#125;&#125;</span><br><span class="line">       &lt;/div&gt;</span><br><span class="line">+      &lt;/div&gt;</span><br><span class="line">+      &#123;&#123; partial(&#x27;_partials/post/post-related-sidebar.swig&#x27;) &#125;&#125;</span><br></pre></td></tr></table></figure>
-<ol start="5">
-<li>删除原始插件的文章结尾的关联文章展示，修改<code>themes/next/layout/_macro/post.swig</code></li>
-</ol>
-  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-    &#123;%- if theme.related_posts.enable and (theme.related_posts.display_in_home or not is_index) %&#125;</span><br><span class="line">-      &#123;&#123; partial(&#x27;_partials/post/post-related.swig&#x27;) &#125;&#125;</span><br><span class="line">-    &#123;%- endif %&#125;</span><br><span class="line"></span><br><span class="line">   &#123;%- if not is_index %&#125;</span><br><span class="line">     &#123;&#123;- next_inject(&#x27;postBodyEnd&#x27;) &#125;&#125;</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -334,7 +339,7 @@
       <i class="fa fa-chevron-left"></i> VirtualBox Tips
     </a></div>
       <div class="post-nav-item">
-    <a href="/2022/01/01/ArchLinux%E5%AE%89%E8%A3%85/" rel="next" title="ArchLinux(1) 安装">
+    <a href="/2022/01/01/ArchLinux(1)%E5%AE%89%E8%A3%85/" rel="next" title="ArchLinux(1) 安装">
       ArchLinux(1) 安装 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -397,7 +402,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E8%81%94%E5%AF%BC%E8%88%AA"><span class="nav-text"> 🔍 关联导航</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E6%96%87%E4%BB%B6%E8%AF%B4%E6%98%8E"><span class="nav-text"> 🌀 基础文件说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%83%8C%E6%99%AF%E5%9B%BE%E7%89%87"><span class="nav-text"> 🌀 背景图片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E7%AB%A0%E9%80%8F%E6%98%8E"><span class="nav-text"> 🌀 文章透明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%B9%E6%A1%86%E5%9C%86%E8%A7%92"><span class="nav-text"> 🌀 边框圆角</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#next7x-%E9%BB%91%E6%9A%97%E6%A8%A1%E5%BC%8F"><span class="nav-text"> 🌀 Next7.x 黑暗模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E9%A6%96%E9%A1%B5%E5%92%8C%E5%BD%92%E6%A1%A3%E9%A1%B5%E7%9A%84%E5%88%86%E9%A1%B5"><span class="nav-text"> 🌀 设置首页和归档页的分页</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E7%9B%B8%E5%85%B3%E6%96%87%E7%AB%A0"><span class="nav-text"> 🌀 设置相关文章</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E8%81%94%E5%AF%BC%E8%88%AA"><span class="nav-text"> 🔍 关联导航</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E6%96%87%E4%BB%B6%E8%AF%B4%E6%98%8E"><span class="nav-text"> 🌀 基础文件说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%83%8C%E6%99%AF%E5%9B%BE%E7%89%87"><span class="nav-text"> 🌀 背景图片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E7%AB%A0%E9%80%8F%E6%98%8E"><span class="nav-text"> 🌀 文章透明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%B9%E6%A1%86%E5%9C%86%E8%A7%92"><span class="nav-text"> 🌀 边框圆角</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#next7x-%E9%BB%91%E6%9A%97%E6%A8%A1%E5%BC%8F"><span class="nav-text"> 🌀 Next7.x 黑暗模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E9%A6%96%E9%A1%B5%E5%92%8C%E5%BD%92%E6%A1%A3%E9%A1%B5%E7%9A%84%E5%88%86%E9%A1%B5"><span class="nav-text"> 🌀 设置首页和归档页的分页</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E8%B6%85%E9%93%BE%E6%8E%A5%E6%A0%B7%E5%BC%8F"><span class="nav-text"> 修改超链接样式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E7%9B%B8%E5%85%B3%E6%96%87%E7%AB%A0"><span class="nav-text"> 🌀 设置相关文章</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -413,14 +418,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-count">9</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
