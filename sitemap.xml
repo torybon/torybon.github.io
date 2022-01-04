@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://example.com/2022/01/04/VirtualBox%E4%B8%8B%E5%AE%89%E8%A3%85Pop_OS!/</loc>
+    
+    <lastmod>2022-01-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://example.com/2021/12/29/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E8%B5%B7%E6%AD%A5:Hexo(2)/</loc>
     
     <lastmod>2022-01-02</lastmod>
@@ -112,7 +121,7 @@
 
   <url>
     <loc>http://example.com/</loc>
-    <lastmod>2022-01-02</lastmod>
+    <lastmod>2022-01-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -120,49 +129,56 @@
   
   <url>
     <loc>http://example.com/tags/Linux/</loc>
-    <lastmod>2022-01-02</lastmod>
+    <lastmod>2022-01-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/Arch/</loc>
-    <lastmod>2022-01-02</lastmod>
+    <lastmod>2022-01-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/VirtualBox/</loc>
-    <lastmod>2022-01-02</lastmod>
+    <lastmod>2022-01-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/Tips/</loc>
-    <lastmod>2022-01-02</lastmod>
+    <lastmod>2022-01-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://example.com/tags/Hexo/</loc>
-    <lastmod>2022-01-02</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://example.com/tags/nodejs/</loc>
-    <lastmod>2022-01-02</lastmod>
+    <loc>http://example.com/tags/Pop-OS/</loc>
+    <lastmod>2022-01-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/windows10/</loc>
-    <lastmod>2022-01-02</lastmod>
+    <lastmod>2022-01-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/tags/Hexo/</loc>
+    <lastmod>2022-01-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/tags/nodejs/</loc>
+    <lastmod>2022-01-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -171,42 +187,42 @@
   
   <url>
     <loc>http://example.com/categories/%E6%8A%80%E6%9C%AF/</loc>
-    <lastmod>2022-01-02</lastmod>
+    <lastmod>2022-01-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://example.com/categories/%E9%9A%8F%E7%AC%94/</loc>
-    <lastmod>2022-01-02</lastmod>
+    <lastmod>2022-01-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://example.com/categories/%E6%8A%80%E6%9C%AF/Linux/</loc>
-    <lastmod>2022-01-02</lastmod>
+    <lastmod>2022-01-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://example.com/categories/%E6%8A%80%E6%9C%AF/VirtualBox/</loc>
-    <lastmod>2022-01-02</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://example.com/categories/%E6%8A%80%E6%9C%AF/Hexo/</loc>
-    <lastmod>2022-01-02</lastmod>
+    <lastmod>2022-01-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://example.com/categories/%E6%8A%80%E6%9C%AF/Windows/</loc>
-    <lastmod>2022-01-02</lastmod>
+    <lastmod>2022-01-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/categories/%E6%8A%80%E6%9C%AF/Hexo/</loc>
+    <lastmod>2022-01-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>

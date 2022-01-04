@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-01-02T15:26:23.380Z</updated>
+  <updated>2022-01-04T14:37:16.496Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>VirtualBox下安装Pop_OS!</title>
+    <link href="http://example.com/2022/01/04/VirtualBox%E4%B8%8B%E5%AE%89%E8%A3%85Pop_OS!/"/>
+    <id>http://example.com/2022/01/04/VirtualBox%E4%B8%8B%E5%AE%89%E8%A3%85Pop_OS!/</id>
+    <published>2022-01-04T13:27:38.779Z</published>
+    <updated>2022-01-04T14:37:16.496Z</updated>
+    
+    <content type="html"><![CDATA[<center><img src="/images/Pop_OS.png" width=50% height=50% align=center/></center>   <p>Pop_OS!是System76为了推行自家的硬件产品而推出的Linux发行版。<br />Pop_OS!基于Ubuntu，本身坐享Ubuntu的社区支持，设置也更加简单，是一个用来试水Linux的优秀选择。<br /><a href="https://pop.system76.com/">Pop_OS! 官网</a></p><span id="more"></span><h2 id="1-安装系统基于virtualbox"><a class="markdownIt-Anchor" href="#1-安装系统基于virtualbox"></a> 1 🌀 安装系统（基于VirtualBox）</h2><ol><li><strong>Pop!_OS基于Ubuntu，安装时选择基于Ubuntu</strong><br /><img src="/images/virtualbox-popos-1.png" alt="" /></li><li>安装时，在设置-&gt;存储-&gt;IDE控制器中选择安装镜像。相当于从镜像启动Live环境。<br /><img src="/images/virtualbox-popos-2.png" alt="" /></li><li>之后默认安装</li><li>安装完成之后，在设备 -&gt; 分配光驱 -&gt; 弹出光驱</li></ol><h2 id="2-显示"><a class="markdownIt-Anchor" href="#2-显示"></a> 2 🌀 显示</h2><ol><li>显存拉到128M</li><li>VirtualBox设置<ul><li>设置 -&gt; 显示 -&gt; 屏幕 -&gt; 显卡控制器 = VMSVGA</li><li>启用3D加速</li><li>安装拓展</li></ul></li><li>虚拟机 -&gt; 视图 -&gt; 自动调整显示尺寸</li></ol><p><img src="/images/virtualbox-popos-3.png" alt="" /></p><h2 id="3-pop_shop"><a class="markdownIt-Anchor" href="#3-pop_shop"></a> 3 🌀 Pop!_Shop</h2><p>Pop_Shop是Pop_OS!内置的应用商店，但是打开后会遇到卡死的情况，可以在设置中添加代理：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">http://cn.archive.ubuntu.com/ubuntu/</span><br><span class="line">https://mirrors.aliyun.com/ubuntu/</span><br></pre></td></tr></table></figure><h2 id="4-开机启动项"><a class="markdownIt-Anchor" href="#4-开机启动项"></a> 4 🌀 开机启动项</h2><p>同ubuntu</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 查看开机启动项目</span><br><span class="line">sudo systemctl list-unit-files --type=service</span><br><span class="line">sudo systemctl list-unit-files --type=service | grep enabled</span><br></pre></td></tr></table></figure><blockquote><p>pop_shop 不执行开机自动更新<br />sudo systemctl list-unit-files --type=service | grep pop<br />sudo systemctl disable pop-upgrade.service</p></blockquote><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">root@pop-os:/home/bowen# systemctl list-unit-files --type=service | grep pop</span><br><span class="line">pop-upgrade-init.service                   static          -</span><br><span class="line">pop-upgrade.service                        enabled         enabled</span><br><span class="line">root@pop-os:/home/bowen# systemctl disable pop-upgrade.service</span><br><span class="line">Removed /etc/systemd/system/multi-user.target.wants/pop-upgrade.service.</span><br><span class="line">root@pop-os:/home/bowen# systemctl list-unit-files --type=service | grep pop</span><br><span class="line">pop-upgrade-init.service                   static          -</span><br><span class="line">pop-upgrade.service                        disabled        enabled</span><br><span class="line">root@pop-os:/home/bowen#</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+    <summary type="html">&lt;center&gt;&lt;img src=&quot;/images/Pop_OS.png&quot; width=50% height=50% align=center/&gt;&lt;/center&gt;   
+&lt;p&gt;Pop_OS!是System76为了推行自家的硬件产品而推出的Linux发行版。&lt;br /&gt;
+Pop_OS!基于Ubuntu，本身坐享Ubuntu的社区支持，设置也更加简单，是一个用来试水Linux的优秀选择。&lt;br /&gt;
+&lt;a href=&quot;https://pop.system76.com/&quot;&gt;Pop_OS! 官网&lt;/a&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="技术" scheme="http://example.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    <category term="VirtualBox" scheme="http://example.com/categories/%E6%8A%80%E6%9C%AF/VirtualBox/"/>
+    
+    
+    <category term="Linux" scheme="http://example.com/tags/Linux/"/>
+    
+    <category term="VirtualBox" scheme="http://example.com/tags/VirtualBox/"/>
+    
+    <category term="Pop_OS!" scheme="http://example.com/tags/Pop-OS/"/>
+    
+  </entry>
   
   <entry>
     <title>ArchLinux(3) dwm美化</title>
