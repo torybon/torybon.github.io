@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo-32x32.jpg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo-16x16.jpg">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="VirtualBox搭建的centOS 7.2 环境下，&#x2F;dev&#x2F;mapper&#x2F;centos-root 空间不足，需要扩容。记录操作。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VirtualBox下Linux扩容">
+<meta property="og:url" content="http://example.com/2021/12/27/VirtualBox%E4%B8%8BLinux%E6%89%A9%E5%AE%B9/index.html">
+<meta property="og:site_name" content="文笔轨迹">
+<meta property="og:description" content="VirtualBox搭建的centOS 7.2 环境下，&#x2F;dev&#x2F;mapper&#x2F;centos-root 空间不足，需要扩容。记录操作。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/images/virtualbox-centos.png">
+<meta property="article:published_time" content="2021-12-27T15:06:15.223Z">
+<meta property="article:modified_time" content="2022-01-02T07:42:35.799Z">
+<meta property="article:author" content="bowen">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="VirtualBox">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/virtualbox-centos.png">
+
+<link rel="canonical" href="http://example.com/2021/12/27/VirtualBox%E4%B8%8BLinux%E6%89%A9%E5%AE%B9/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>VirtualBox下Linux扩容 | 文笔轨迹</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="文笔轨迹" type="application/atom+xml">
+<style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}</style></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">文笔轨迹</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">bowen's blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/12/27/VirtualBox%E4%B8%8BLinux%E6%89%A9%E5%AE%B9/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="bowen">
+      <meta itemprop="description" content="Cheerleading any kind of inanimate object is silly">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="文笔轨迹">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          VirtualBox下Linux扩容
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-12-27 23:06:15" itemprop="dateCreated datePublished" datetime="2021-12-27T23:06:15+08:00">2021-12-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-01-02 15:42:35" itemprop="dateModified" datetime="2022-01-02T15:42:35+08:00">2022-01-02</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/VirtualBox/" itemprop="url" rel="index"><span itemprop="name">VirtualBox</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <center><img src="/images/virtualbox-centos.png" width=50% height=50% align=center/></center>
+<p>VirtualBox搭建的centOS 7.2 环境下，/dev/mapper/centos-root 空间不足，需要扩容。记录操作。</p>
+<span id="more"></span>
+<h2 id="1-root确认故障"><a class="markdownIt-Anchor" href="#1-root确认故障"></a> 1 🌀 root确认故障</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo -s</span><br><span class="line">df -h</span><br></pre></td></tr></table></figure>
+<h2 id="2-在虚拟机中添加一块物理的磁盘重起虚拟机"><a class="markdownIt-Anchor" href="#2-在虚拟机中添加一块物理的磁盘重起虚拟机"></a> 2 🌀 在虚拟机中添加一块物理的磁盘，重起虚拟机</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># 虚拟机设置界面中选中需要扩容的磁盘, 然后在右下方处点击扩展按钮, 即可启动扩展任务</span><br></pre></td></tr></table></figure>
+<h2 id="3-查看磁盘编号"><a class="markdownIt-Anchor" href="#3-查看磁盘编号"></a> 3 🌀 查看磁盘编号</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">[user@localhost ~]$ ls /dev/sd*</span><br><span class="line">/dev/sda  /dev/sda1  /dev/sda2</span><br><span class="line"></span><br><span class="line">[root@localhost user]# fdisk -l</span><br><span class="line"></span><br><span class="line">磁盘 /dev/sda：16.1 GB, 16106127360 字节，31457280 个扇区</span><br><span class="line">Units = 扇区 of 1 * 512 = 512 bytes</span><br><span class="line">扇区大小(逻辑/物理)：512 字节 / 512 字节</span><br><span class="line">I/O 大小(最小/最佳)：512 字节 / 512 字节</span><br><span class="line">磁盘标签类型：dos</span><br><span class="line">磁盘标识符：0x000398a7</span><br><span class="line"></span><br><span class="line">   设备 Boot      Start         End      Blocks   Id  System</span><br><span class="line">/dev/sda1   *        2048     2099199     1048576   83  Linux</span><br><span class="line">/dev/sda2         2099200    20971519     9436160   8e  Linux LVM</span><br><span class="line"></span><br><span class="line">磁盘 /dev/mapper/centos-root：8585 MB, 8585740288 字节，16769024 个扇区</span><br><span class="line">Units = 扇区 of 1 * 512 = 512 bytes</span><br><span class="line">扇区大小(逻辑/物理)：512 字节 / 512 字节</span><br><span class="line">I/O 大小(最小/最佳)：512 字节 / 512 字节</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">磁盘 /dev/mapper/centos-swap：1073 MB, 1073741824 字节，2097152 个扇区</span><br><span class="line">Units = 扇区 of 1 * 512 = 512 bytes</span><br><span class="line">扇区大小(逻辑/物理)：512 字节 / 512 字节</span><br><span class="line">I/O 大小(最小/最佳)：512 字节 / 512 字节</span><br></pre></td></tr></table></figure>
+<h2 id="4-挂载"><a class="markdownIt-Anchor" href="#4-挂载"></a> 4 🌀 挂载</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost user]# fdisk /dev/sda</span><br><span class="line">欢迎使用 fdisk (util-linux 2.23.2)。</span><br><span class="line"></span><br><span class="line">更改将停留在内存中，直到您决定将更改写入磁盘。</span><br><span class="line">使用写入命令前请三思。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">命令(输入 m 获取帮助)：m</span><br><span class="line">命令操作</span><br><span class="line">   a   toggle a bootable flag</span><br><span class="line">   b   edit bsd disklabel</span><br><span class="line">   c   toggle the dos compatibility flag</span><br><span class="line">   d   delete a partition</span><br><span class="line">   g   create a new empty GPT partition table</span><br><span class="line">   G   create an IRIX (SGI) partition table</span><br><span class="line">   l   list known partition types</span><br><span class="line">   m   print this menu</span><br><span class="line">   n   add a new partition</span><br><span class="line">   o   create a new empty DOS partition table</span><br><span class="line">   p   print the partition table</span><br><span class="line">   q   quit without saving changes</span><br><span class="line">   s   create a new empty Sun disklabel</span><br><span class="line">   t   change a partition&#x27;s system id</span><br><span class="line">   u   change display/entry units</span><br><span class="line">   v   verify the partition table</span><br><span class="line">   w   write table to disk and exit</span><br><span class="line">   x   extra functionality (experts only)</span><br><span class="line"></span><br><span class="line">命令(输入 m 获取帮助)：n</span><br><span class="line">Partition type:</span><br><span class="line">   p   primary (2 primary, 0 extended, 2 free)</span><br><span class="line">   e   extended</span><br><span class="line">Select (default p): p</span><br><span class="line">分区号 (3,4，默认 3)：3</span><br><span class="line">起始 扇区 (20971520-31457279，默认为 20971520)：</span><br><span class="line">将使用默认值 20971520</span><br><span class="line">Last 扇区, +扇区 or +size&#123;K,M,G&#125; (20971520-31457279，默认为 31457279)：</span><br><span class="line">将使用默认值 31457279</span><br><span class="line">分区 3 已设置为 Linux 类型，大小设为 5 GiB</span><br><span class="line"></span><br><span class="line">命令(输入 m 获取帮助)：w</span><br><span class="line">The partition table has been altered!</span><br><span class="line"></span><br><span class="line">Calling ioctl() to re-read partition table.</span><br><span class="line"></span><br><span class="line">WARNING: Re-reading the partition table failed with error 16: 设备或资源忙.</span><br><span class="line">The kernel still uses the old table. The new table will be used at</span><br><span class="line">the next reboot or after you run partprobe(8) or kpartx(8)</span><br><span class="line">正在同步磁盘。</span><br><span class="line">[root@localhost user]#</span><br></pre></td></tr></table></figure>
+<h2 id="5-支持lvm"><a class="markdownIt-Anchor" href="#5-支持lvm"></a> 5 🌀 支持LVM</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost user]# fdisk /dev/sda</span><br><span class="line">欢迎使用 fdisk (util-linux 2.23.2)。</span><br><span class="line"></span><br><span class="line">更改将停留在内存中，直到您决定将更改写入磁盘。</span><br><span class="line">使用写入命令前请三思。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">命令(输入 m 获取帮助)：m</span><br><span class="line">命令操作</span><br><span class="line">   a   toggle a bootable flag</span><br><span class="line">   b   edit bsd disklabel</span><br><span class="line">   c   toggle the dos compatibility flag</span><br><span class="line">   d   delete a partition</span><br><span class="line">   g   create a new empty GPT partition table</span><br><span class="line">   G   create an IRIX (SGI) partition table</span><br><span class="line">   l   list known partition types</span><br><span class="line">   m   print this menu</span><br><span class="line">   n   add a new partition</span><br><span class="line">   o   create a new empty DOS partition table</span><br><span class="line">   p   print the partition table</span><br><span class="line">   q   quit without saving changes</span><br><span class="line">   s   create a new empty Sun disklabel</span><br><span class="line">   t   change a partition&#x27;s system id</span><br><span class="line">   u   change display/entry units</span><br><span class="line">   v   verify the partition table</span><br><span class="line">   w   write table to disk and exit</span><br><span class="line">   x   extra functionality (experts only)</span><br><span class="line"></span><br><span class="line">命令(输入 m 获取帮助)：t</span><br><span class="line">分区号 (1-3，默认 3)：3</span><br><span class="line">Hex 代码(输入 L 列出所有代码)：8e</span><br><span class="line">已将分区“Linux”的类型更改为“Linux LVM”</span><br><span class="line"></span><br><span class="line">命令(输入 m 获取帮助)：w</span><br><span class="line">The partition table has been altered!</span><br><span class="line"></span><br><span class="line">Calling ioctl() to re-read partition table.</span><br><span class="line"></span><br><span class="line">WARNING: Re-reading the partition table failed with error 16: 设备或资源忙.</span><br><span class="line">The kernel still uses the old table. The new table will be used at</span><br><span class="line">the next reboot or after you run partprobe(8) or kpartx(8)</span><br><span class="line">正在同步磁盘。</span><br></pre></td></tr></table></figure>
+<h2 id="6-reboot-确认"><a class="markdownIt-Anchor" href="#6-reboot-确认"></a> 6 🌀 reboot &amp; 确认</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost user]# reboot</span><br><span class="line"></span><br><span class="line">[root@localhost user]# fdisk -l</span><br><span class="line"></span><br><span class="line">磁盘 /dev/sda：16.1 GB, 16106127360 字节，31457280 个扇区</span><br><span class="line">Units = 扇区 of 1 * 512 = 512 bytes</span><br><span class="line">扇区大小(逻辑/物理)：512 字节 / 512 字节</span><br><span class="line">I/O 大小(最小/最佳)：512 字节 / 512 字节</span><br><span class="line">磁盘标签类型：dos</span><br><span class="line">磁盘标识符：0x000398a7</span><br><span class="line"></span><br><span class="line">   设备 Boot      Start         End      Blocks   Id  System</span><br><span class="line">/dev/sda1   *        2048     2099199     1048576   83  Linux</span><br><span class="line">/dev/sda2         2099200    20971519     9436160   8e  Linux LVM</span><br><span class="line">/dev/sda3        20971520    31457279     5242880   8e  Linux LVM</span><br><span class="line"></span><br><span class="line">磁盘 /dev/mapper/centos-root：8585 MB, 8585740288 字节，16769024 个扇区</span><br><span class="line">Units = 扇区 of 1 * 512 = 512 bytes</span><br><span class="line">扇区大小(逻辑/物理)：512 字节 / 512 字节</span><br><span class="line">I/O 大小(最小/最佳)：512 字节 / 512 字节</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">磁盘 /dev/mapper/centos-swap：1073 MB, 1073741824 字节，2097152 个扇区</span><br><span class="line">Units = 扇区 of 1 * 512 = 512 bytes</span><br><span class="line">扇区大小(逻辑/物理)：512 字节 / 512 字节</span><br><span class="line">I/O 大小(最小/最佳)：512 字节 / 512 字节</span><br></pre></td></tr></table></figure>
+<h2 id="7-格式化该新添加的分区"><a class="markdownIt-Anchor" href="#7-格式化该新添加的分区"></a> 7 🌀 格式化该新添加的分区</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost user]# mkfs -t ext3 /dev/sda3</span><br><span class="line">mke2fs 1.42.9 (28-Dec-2013)</span><br><span class="line">文件系统标签=</span><br><span class="line">OS type: Linux</span><br><span class="line">块大小=4096 (log=2)</span><br><span class="line">分块大小=4096 (log=2)</span><br><span class="line">Stride=0 blocks, Stripe width=0 blocks</span><br><span class="line">327680 inodes, 1310720 blocks</span><br><span class="line">65536 blocks (5.00%) reserved for the super user</span><br><span class="line">第一个数据块=0</span><br><span class="line">Maximum filesystem blocks=1342177280</span><br><span class="line">40 block groups</span><br><span class="line">32768 blocks per group, 32768 fragments per group</span><br><span class="line">8192 inodes per group</span><br><span class="line">Superblock backups stored on blocks:</span><br><span class="line">        32768, 98304, 163840, 229376, 294912, 819200, 884736</span><br><span class="line"></span><br><span class="line">Allocating group tables: 完成</span><br><span class="line">正在写入inode表: 完成</span><br><span class="line">Creating journal (32768 blocks): 完成</span><br><span class="line">Writing superblocks and filesystem accounting information: 完成</span><br></pre></td></tr></table></figure>
+<h2 id="8-确认根分区信息"><a class="markdownIt-Anchor" href="#8-确认根分区信息"></a> 8 🌀 确认根分区信息</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost user]# lvs</span><br><span class="line">  LV   VG     Attr       LSize  Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert</span><br><span class="line">  root centos -wi-ao---- &lt;8.00g</span><br><span class="line">  swap centos -wi-ao----  1.00g</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">[root@localhost user]# pvcreate /dev/sda3</span><br><span class="line">WARNING: ext3 signature detected on /dev/sda3 at offset 1080. Wipe it? [y/n]: y</span><br><span class="line">  Wiping ext3 signature on /dev/sda3.</span><br><span class="line">  Physical volume &quot;/dev/sda3&quot; successfully created.</span><br><span class="line">[root@localhost user]# df -h</span><br><span class="line">文件系统                 容量  已用  可用 已用% 挂载点</span><br><span class="line">/dev/mapper/centos-root  8.0G  6.1G  1.9G   77% /</span><br><span class="line">devtmpfs                 898M     0  898M    0% /dev</span><br><span class="line">tmpfs                    910M     0  910M    0% /dev/shm</span><br><span class="line">tmpfs                    910M  9.6M  901M    2% /run</span><br><span class="line">tmpfs                    910M     0  910M    0% /sys/fs/cgroup</span><br><span class="line">/dev/sda1               1014M  146M  869M   15% /boot</span><br><span class="line">tmpfs                    182M     0  182M    0% /run/user/0</span><br><span class="line">tmpfs                    182M     0  182M    0% /run/user/1000</span><br><span class="line">[root@localhost user]# vgextend centos /dev/sda3</span><br><span class="line">  Volume group &quot;centos&quot; successfully extended</span><br><span class="line">[root@localhost user]# vgdisplay</span><br><span class="line">  --- Volume group ---</span><br><span class="line">  VG Name               centos</span><br><span class="line">  System ID</span><br><span class="line">  Format                lvm2</span><br><span class="line">  Metadata Areas        2</span><br><span class="line">  Metadata Sequence No  4</span><br><span class="line">  VG Access             read/write</span><br><span class="line">  VG Status             resizable</span><br><span class="line">  MAX LV                0</span><br><span class="line">  Cur LV                2</span><br><span class="line">  Open LV               2</span><br><span class="line">  Max PV                0</span><br><span class="line">  Cur PV                2</span><br><span class="line">  Act PV                2</span><br><span class="line">  VG Size               13.99 GiB</span><br><span class="line">  PE Size               4.00 MiB</span><br><span class="line">  Total PE              3582</span><br><span class="line">  Alloc PE / Size       2303 / &lt;9.00 GiB</span><br><span class="line">  Free  PE / Size       1279 / &lt;5.00 GiB</span><br><span class="line">  VG UUID               drQqLf-ibdG-E4IB-bAR1-ExjT-Ec6J-dUc3ts</span><br></pre></td></tr></table></figure>
+<h2 id="9-向跟分区拓展"><a class="markdownIt-Anchor" href="#9-向跟分区拓展"></a> 9 🌀 向跟分区拓展</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost user]# lvextend -L +4.99G /dev/centos/root /dev/sda3</span><br><span class="line">  Rounding size to boundary between physical extents: 4.99 GiB.</span><br><span class="line">  Size of logical volume centos/root changed from &lt;8.00 GiB (2047 extents) to &lt;12.99 GiB (3325 extents).</span><br><span class="line">  Logical volume centos/root successfully resized.</span><br><span class="line"></span><br><span class="line">[root@localhost user]# xfs_growfs /dev/mapper/centos-root</span><br><span class="line">meta-data=/dev/mapper/centos-root isize=512    agcount=4, agsize=524032 blks</span><br><span class="line">         =                       sectsz=512   attr=2, projid32bit=1</span><br><span class="line">         =                       crc=1        finobt=0 spinodes=0</span><br><span class="line">data     =                       bsize=4096   blocks=2096128, imaxpct=25</span><br><span class="line">         =                       sunit=0      swidth=0 blks</span><br><span class="line">naming   =version 2              bsize=4096   ascii-ci=0 ftype=1</span><br><span class="line">log      =internal               bsize=4096   blocks=2560, version=2</span><br><span class="line">         =                       sectsz=512   sunit=0 blks, lazy-count=1</span><br><span class="line">realtime =none                   extsz=4096   blocks=0, rtextents=0</span><br><span class="line">data blocks changed from 2096128 to 3404800</span><br></pre></td></tr></table></figure>
+<h2 id="10-check"><a class="markdownIt-Anchor" href="#10-check"></a> 10 🌀 check</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost user]# df -h</span><br><span class="line">文件系统                 容量  已用  可用 已用% 挂载点</span><br><span class="line">/dev/mapper/centos-root   13G  6.1G  6.9G   47% /</span><br><span class="line">devtmpfs                 898M     0  898M    0% /dev</span><br><span class="line">tmpfs                    910M     0  910M    0% /dev/shm</span><br><span class="line">tmpfs                    910M  9.6M  901M    2% /run</span><br><span class="line">tmpfs                    910M     0  910M    0% /sys/fs/cgroup</span><br><span class="line">/dev/sda1               1014M  146M  869M   15% /boot</span><br><span class="line">tmpfs                    182M     0  182M    0% /run/user/0</span><br><span class="line">tmpfs                    182M     0  182M    0% /run/user/1000</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Linux/" rel="tag"># Linux</a>
+              <a href="/tags/VirtualBox/" rel="tag"># VirtualBox</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/12/26/Linux%20VS%20Windows/" rel="prev" title="Linux VS Windows">
+      <i class="fa fa-chevron-left"></i> Linux VS Windows
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/12/28/windows10%E7%BE%8E%E5%8C%96%E8%BD%AF%E4%BB%B6/" rel="next" title="windows10美化软件">
+      windows10美化软件 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+    <div>
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-root%E7%A1%AE%E8%AE%A4%E6%95%85%E9%9A%9C"><span class="nav-text"> 1 🌀 root确认故障</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%9C%A8%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%AD%E6%B7%BB%E5%8A%A0%E4%B8%80%E5%9D%97%E7%89%A9%E7%90%86%E7%9A%84%E7%A3%81%E7%9B%98%E9%87%8D%E8%B5%B7%E8%99%9A%E6%8B%9F%E6%9C%BA"><span class="nav-text"> 2 🌀 在虚拟机中添加一块物理的磁盘，重起虚拟机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E6%9F%A5%E7%9C%8B%E7%A3%81%E7%9B%98%E7%BC%96%E5%8F%B7"><span class="nav-text"> 3 🌀 查看磁盘编号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E6%8C%82%E8%BD%BD"><span class="nav-text"> 4 🌀 挂载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E6%94%AF%E6%8C%81lvm"><span class="nav-text"> 5 🌀 支持LVM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-reboot-%E7%A1%AE%E8%AE%A4"><span class="nav-text"> 6 🌀 reboot &amp; 确认</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%AF%A5%E6%96%B0%E6%B7%BB%E5%8A%A0%E7%9A%84%E5%88%86%E5%8C%BA"><span class="nav-text"> 7 🌀 格式化该新添加的分区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-%E7%A1%AE%E8%AE%A4%E6%A0%B9%E5%88%86%E5%8C%BA%E4%BF%A1%E6%81%AF"><span class="nav-text"> 8 🌀 确认根分区信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-%E5%90%91%E8%B7%9F%E5%88%86%E5%8C%BA%E6%8B%93%E5%B1%95"><span class="nav-text"> 9 🌀 向跟分区拓展</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-check"><span class="nav-text"> 10 🌀 check</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="bowen"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">bowen</p>
+  <div class="site-description" itemprop="description">Cheerleading any kind of inanimate object is silly</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+    
+<div>
+    <ul class="sidebar-related-title">
+	<li>
+	    相关文章
+	</li>
+    </ul>
+
+    <!--noindex-->
+    <div class="sidebar-related">
+	<ol>
+	    <li><a href="/2022/01/04/VirtualBox下安装Pop_OS!/" rel="bookmark"><span class="nav-text">VirtualBox下安装Pop_OS!</span></a></li>
+	    <li><a href="/2022/01/01/ArchLinux(1)安装/" rel="bookmark"><span class="nav-text">ArchLinux(1) 安装</span></a></li>
+	    <li><a href="/2022/01/02/ArchLinux(2)dwm安装/" rel="bookmark"><span class="nav-text">ArchLinux(2) dwm安装</span></a></li>
+	    <li><a href="/2022/01/03/ArchLinux(3)dwm美化/" rel="bookmark"><span class="nav-text">ArchLinux(3) dwm美化</span></a></li>
+	    <li><a href="/2021/12/26/Linux VS Windows/" rel="bookmark"><span class="nav-text">Linux VS Windows</span></a></li>
+	</ol>
+    </div>
+    <!--/noindex-->
+</div>
+
+
+
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-house-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">bowen</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+
+<script>
+var options = {
+  bottom: '32px',
+  right: 'unset',
+  left: '32px',
+  time: '0.5s',
+  mixColor: 'transparent',
+  backgroundColor: 'transparent',
+  buttonColorDark: '#808080',
+  buttonColorLight: '#fff',
+  saveInCookies: true,
+  label: '🌓',
+  autoMatchOsTheme: true
+}
+const darkmode = new Darkmode(options);
+window.darkmode = darkmode;
+darkmode.showWidget();
+</script>
+
+</body>
+</html>
