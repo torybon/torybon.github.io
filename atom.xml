@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-01-04T14:37:16.496Z</updated>
+  <updated>2022-01-05T14:30:21.939Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>VirtualBox下安装Manjore</title>
+    <link href="http://example.com/2022/01/05/VirtualBox%E4%B8%8B%E5%AE%89%E8%A3%85Manjore/"/>
+    <id>http://example.com/2022/01/05/VirtualBox%E4%B8%8B%E5%AE%89%E8%A3%85Manjore/</id>
+    <published>2022-01-05T13:58:26.942Z</published>
+    <updated>2022-01-05T14:30:21.939Z</updated>
+    
+    <content type="html"><![CDATA[<center><img src="/images/manjore.png" width=50% height=50% align=center/></center>   <p>Manjaro是一款基于Arch Linux的Linux发行版。在继承了Arch Linux的滚动更新支持和AUR软件仓库之外，<font color="red">着重解决了Arch Linux对新手不友好的缺点</font>，使用图形化界面，简化安装过程的同时，也简化了安装后大量的软件支持。<br />Manjore下载镜像分为 xfce，kde，gnome，Architect。使用虚拟机安装Manjore也可以体验不同的桌面环境。<br /><a href="https://manjaro.org.cn/">Manjore 官网</a></p><span id="more"></span><h2 id="1-安装系统基于virtualbox"><a class="markdownIt-Anchor" href="#1-安装系统基于virtualbox"></a> 1 🌀 安装系统（基于VirtualBox）</h2><ol><li><strong>同Pop!_OS的安装，基于Arch，安装类型选择Arch x64</strong></li><li>安装增强功能。如果自动安装不成功，那么<ol><li>使用root用户登录</li><li>点开文件管理，看到新挂载的磁盘镜像，如果没有挂载尝试使用 mount 命令</li><li>运行 VboxLinuxAddtions.run</li></ol></li></ol><h2 id="2-安装中文输入法"><a class="markdownIt-Anchor" href="#2-安装中文输入法"></a> 2 🌀 安装中文输入法</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S fcitx</span><br><span class="line">sudo pacman -S fcitx-configtool   ----配置工具</span><br><span class="line">sudo pacman -S fcitx-sogoupinyin  ----可选安装，fcitx默认已有中文输入</span><br><span class="line"></span><br><span class="line"># 需要新建隐藏文件</span><br><span class="line">sudo nano ～/.xprofile</span><br><span class="line"></span><br><span class="line">export GTK_IM_MODULE=fcitx</span><br><span class="line">export QT_IM_MODULE=fcitx</span><br><span class="line">export XMODIFIERS=@im=fcitx</span><br><span class="line"></span><br><span class="line">注销重新登录</span><br></pre></td></tr></table></figure><h2 id="3-pacman包管理系统"><a class="markdownIt-Anchor" href="#3-pacman包管理系统"></a> 3 🌀 pacman包管理系统</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sudo -s</span><br><span class="line">pacman-mirrors -i -c China -m rank</span><br><span class="line">pacman -Syy</span><br><span class="line"></span><br><span class="line"># 下载密钥环，导入 GPG key</span><br><span class="line">pacman -S archlinuxcn-keyring</span><br><span class="line">pacman -Syy</span><br></pre></td></tr></table></figure><p><img src="/images/manjore-1.png" alt="" /></p><blockquote><p>vim /etc/pacman.conf</p><blockquote><p>2021-08-20 只有https://mirrors.ustc.edu.cn/archlinuxcn/$arch可用。<br />其他会报：无法从 <a href="http://mirrors.ustc.edu.cn">mirrors.ustc.edu.cn</a> : The requested URL returned error: 404 获取文件 ‘archlinuxcn.db’</p></blockquote></blockquote><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 在最后添加</span><br><span class="line">[archlinuxcn]</span><br><span class="line">SigLevel = Optional TrustedOnly</span><br><span class="line">Server = https://mirrors.ustc.edu.cn/archlinuxcn/$arch</span><br></pre></td></tr></table></figure><p><img src="/images/manjore-2.png" alt="image" /></p><h2 id="4-基于pacman更新系统"><a class="markdownIt-Anchor" href="#4-基于pacman更新系统"></a> 4 🌀 基于pacman更新系统</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -Syyu</span><br></pre></td></tr></table></figure><p><img src="/images/manjore-3.png" alt="image" /></p><h2 id="5-aur工具arch系安装核心"><a class="markdownIt-Anchor" href="#5-aur工具arch系安装核心"></a> 5 🌀 Aur工具【Arch系安装核心】</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S yay</span><br></pre></td></tr></table></figure><p>避免以 root/sudo 运行 yay</p>]]></content>
+    
+    
+    <summary type="html">&lt;center&gt;&lt;img src=&quot;/images/manjore.png&quot; width=50% height=50% align=center/&gt;&lt;/center&gt;   
+&lt;p&gt;Manjaro是一款基于Arch Linux的Linux发行版。在继承了Arch Linux的滚动更新支持和AUR软件仓库之外，&lt;font color=&quot;red&quot;&gt;着重解决了Arch Linux对新手不友好的缺点&lt;/font&gt;，使用图形化界面，简化安装过程的同时，也简化了安装后大量的软件支持。&lt;br /&gt;
+Manjore下载镜像分为 xfce，kde，gnome，Architect。使用虚拟机安装Manjore也可以体验不同的桌面环境。&lt;br /&gt;
+&lt;a href=&quot;https://manjaro.org.cn/&quot;&gt;Manjore 官网&lt;/a&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="技术" scheme="http://example.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    <category term="VirtualBox" scheme="http://example.com/categories/%E6%8A%80%E6%9C%AF/VirtualBox/"/>
+    
+    
+    <category term="Linux" scheme="http://example.com/tags/Linux/"/>
+    
+    <category term="VirtualBox" scheme="http://example.com/tags/VirtualBox/"/>
+    
+    <category term="Manjore" scheme="http://example.com/tags/Manjore/"/>
+    
+  </entry>
   
   <entry>
     <title>VirtualBox下安装Pop_OS!</title>
