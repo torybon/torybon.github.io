@@ -1,28 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://example.com/2022/01/06/Linux%20Navigation/</loc>
+    <lastmod>2022-01-06</lastmod>
+  </url>
+  <url>
+    <loc>http://example.com/2022/01/03/ArchLinux(3)dwm%E7%BE%8E%E5%8C%96/</loc>
+    <lastmod>2022-01-06</lastmod>
+  </url>
+  <url>
+    <loc>http://example.com/2022/01/02/ArchLinux(2)dwm%E5%AE%89%E8%A3%85/</loc>
+    <lastmod>2022-01-06</lastmod>
+  </url>
+  <url>
+    <loc>http://example.com/2021/12/31/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E8%B5%B7%E6%AD%A5:Hexo(3)/</loc>
+    <lastmod>2022-01-06</lastmod>
+  </url>
+  <url>
+    <loc>http://example.com/2021/12/29/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E8%B5%B7%E6%AD%A5:Hexo(2)/</loc>
+    <lastmod>2022-01-06</lastmod>
+  </url>
+  <url>
+    <loc>http://example.com/2021/12/25/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E8%B5%B7%E6%AD%A5:Hexo(1)/</loc>
+    <lastmod>2022-01-06</lastmod>
+  </url>
+  <url>
+    <loc>http://example.com/2022/01/01/ArchLinux(1)%E5%AE%89%E8%A3%85/</loc>
+    <lastmod>2022-01-06</lastmod>
+  </url>
+  <url>
     <loc>http://example.com/2022/01/05/VirtualBox%E4%B8%8B%E5%AE%89%E8%A3%85Manjore/</loc>
     <lastmod>2022-01-05</lastmod>
   </url>
   <url>
     <loc>http://example.com/2022/01/04/VirtualBox%E4%B8%8B%E5%AE%89%E8%A3%85Pop_OS!/</loc>
     <lastmod>2022-01-04</lastmod>
-  </url>
-  <url>
-    <loc>http://example.com/2021/12/29/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E8%B5%B7%E6%AD%A5:Hexo(2)/</loc>
-    <lastmod>2022-01-02</lastmod>
-  </url>
-  <url>
-    <loc>http://example.com/2022/01/03/ArchLinux(3)dwm%E7%BE%8E%E5%8C%96/</loc>
-    <lastmod>2022-01-02</lastmod>
-  </url>
-  <url>
-    <loc>http://example.com/2022/01/02/ArchLinux(2)dwm%E5%AE%89%E8%A3%85/</loc>
-    <lastmod>2022-01-02</lastmod>
-  </url>
-  <url>
-    <loc>http://example.com/2022/01/01/ArchLinux(1)%E5%AE%89%E8%A3%85/</loc>
-    <lastmod>2022-01-02</lastmod>
   </url>
   <url>
     <loc>http://example.com/2021/12/28/windows10%E7%BE%8E%E5%8C%96%E8%BD%AF%E4%BB%B6/</loc>
@@ -34,14 +46,6 @@
   </url>
   <url>
     <loc>http://example.com/2021/12/30/VirtualBox%20Tips/</loc>
-    <lastmod>2022-01-02</lastmod>
-  </url>
-  <url>
-    <loc>http://example.com/2021/12/31/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E8%B5%B7%E6%AD%A5:Hexo(3)/</loc>
-    <lastmod>2022-01-02</lastmod>
-  </url>
-  <url>
-    <loc>http://example.com/2021/12/25/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E8%B5%B7%E6%AD%A5:Hexo(1)/</loc>
     <lastmod>2022-01-02</lastmod>
   </url>
   <url>
