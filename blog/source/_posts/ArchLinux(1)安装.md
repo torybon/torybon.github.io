@@ -17,11 +17,11 @@ Arch Linux不是一个开箱即用的系统，安装过程相比windows或者Pop
 
 ## 🔍 关联导航
 
-- {% post_link 'ArchLinux(1)安装' '▶️ ArchLinux 安装' %}
-- {% post_link 'ArchLinux(2)dwm安装' 'ArchLinux dwm安装' %}
-- {% post_link 'ArchLinux(3)dwm美化' 'ArchLinux dwm美化' %}
+★ {% post_link 'ArchLinux(1)安装' 'ArchLinux 安装' %}    
+☆ {% post_link 'ArchLinux(2)dwm安装' 'ArchLinux dwm安装' %}    
+☆ {% post_link 'ArchLinux(3)dwm美化' 'ArchLinux dwm美化' %}    
 
-## ⭐ 说明
+## ✔️ 说明
 1. Arch Linux的安装没有图形化界面，完全依赖命令行操作    
 2. Arch Linux的发行非常积极，部分软件或者操作可能会存在过时的问题。此时请参照 **Arch Wiki**    
 

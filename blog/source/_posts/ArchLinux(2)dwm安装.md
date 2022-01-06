@@ -17,11 +17,11 @@ Arch Linux自身不带有任何图形化界面，所以，可以在Arch上安装
 
 ## 🔍 关联导航
 
-- {% post_link 'ArchLinux(1)安装' 'ArchLinux 安装' %}
-- {% post_link 'ArchLinux(2)dwm安装' '▶️ ArchLinux dwm安装' %}
-- {% post_link 'ArchLinux(3)dwm美化' 'ArchLinux dwm美化' %}
+☆ {% post_link 'ArchLinux(1)安装' 'ArchLinux 安装' %}
+★ {% post_link 'ArchLinux(2)dwm安装' 'ArchLinux dwm安装' %}
+☆ {% post_link 'ArchLinux(3)dwm美化' 'ArchLinux dwm美化' %}
 
-## ⭐ 说明
+## ✔️ 说明
 Dwm是Xorg下的一个动态窗口管理器。采用平铺的布局方式。用C语言编写，被设计的目标是控制在2000行以下的代码。    
 [Suckless Dwm](http://dwm.suckless.org/)
 
